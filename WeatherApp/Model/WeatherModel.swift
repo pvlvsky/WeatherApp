@@ -18,7 +18,7 @@ struct WeatherModel: Codable {
     var system: System
     var timezone: Int
     var id: Int
-    var name: String
+    var city: String
     var code: Int
     
     enum CodingKeys: String, CodingKey {
@@ -32,7 +32,7 @@ struct WeatherModel: Codable {
         case system = "sys"
         case timezone
         case id
-        case name
+        case city = "name"
         case code = "cod"
     }
 }

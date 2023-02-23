@@ -6,26 +6,24 @@
 //
 
 import UIKit
-import CoreLocation
 
 class ViewController: UIViewController {
     
-    private var currentLocation = UILabel()
-    private  var currentTime = UILabel()
-    private  var currentTemperatureLabel = UILabel()
-    private  var temperatureDescription = UILabel()
-    private  var temperatureImage = UIImageView()
-    private  var temperatureMax = UILabel()
-    private  var temperatureMin = UILabel()
+    var currentLocation = UILabel()
+    var currentTime = UILabel()
+    var currentTemperatureLabel = UILabel()
+    var temperatureDescription = UILabel()
+    var temperatureImage = UIImageView()
+    var temperatureMax = UILabel()
+    var temperatureMin = UILabel()
     
-    var location: CLLocation?
-    var latitude : CLLocationDegrees!
-    var longitude: CLLocationDegrees!
-    var locationService = CLLocationManager()
+    
     var networkService = NetworkService()
+    var weatherModel: WeatherModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadInfo()
         setupView()
         setupCurrentLocation()
         setupCurrentTime()
@@ -44,11 +42,10 @@ class ViewController: UIViewController {
     private func setupCurrentLocation() {
         view.addSubview(currentLocation)
         
-        currentLocation.text = "Location"
         currentLocation.textAlignment = .left
         currentLocation.textColor = .label
         currentLocation.numberOfLines = 0
-        currentLocation.font = UIFont.systemFont(ofSize: 38, weight: .heavy)
+        currentLocation.font = UIFont.systemFont(ofSize: 30, weight: .heavy)
         
         currentLocation.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([currentLocation.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -61,7 +58,7 @@ class ViewController: UIViewController {
     private func setupCurrentTime(){
         view.addSubview(currentTime)
         
-        currentTime.text = "23 Feb 2023"
+        //currentTime.text = "23 Feb 2023"
         currentTime.textAlignment = .left
         currentTime.textColor = .label
         currentTime.font = UIFont.systemFont(ofSize: 10, weight: .heavy)
@@ -77,7 +74,6 @@ class ViewController: UIViewController {
     private func setupCurrentTemperatureLabel(){
         view.addSubview(currentTemperatureLabel)
         
-        currentTemperatureLabel.text = "cur°C"
         currentTemperatureLabel.textColor = .label
         currentTemperatureLabel.textAlignment = .left
         currentTemperatureLabel.font = UIFont.systemFont(ofSize: 60, weight: .heavy)
@@ -86,14 +82,13 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([currentTemperatureLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20),
                                      currentTemperatureLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
                                      currentTemperatureLabel.heightAnchor.constraint(equalToConstant: 70),
-                                     currentTemperatureLabel.widthAnchor.constraint(equalToConstant: 250)
+                                     currentTemperatureLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
                                     ])
     }
     
     private func setupTemperatureDescription(){
         view.addSubview(temperatureDescription)
         
-        temperatureDescription.text = "Text"
         temperatureDescription.textAlignment = .left
         temperatureDescription.textColor = .label
         temperatureDescription.font = UIFont.systemFont(ofSize: 14, weight: .light)
@@ -112,6 +107,7 @@ class ViewController: UIViewController {
         temperatureImage.image = UIImage(systemName: "cloud.fill")
         temperatureImage.contentMode = .scaleAspectFit
         temperatureImage.tintColor = .gray
+        temperatureImage.isHidden = true
         
         temperatureImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([temperatureImage.topAnchor.constraint(equalTo: currentTemperatureLabel.bottomAnchor),
@@ -124,7 +120,6 @@ class ViewController: UIViewController {
     private func setupTemperatureMax(){
         view.addSubview(temperatureMax)
         
-        temperatureMax.text = " max °C"
         temperatureMax.textAlignment = .left
         temperatureMax.textColor = .label
         temperatureMax.font = UIFont.systemFont(ofSize: 14, weight: .medium)
@@ -140,7 +135,6 @@ class ViewController: UIViewController {
     private func setupTemperatureMin(){
         view.addSubview(temperatureMin)
         
-        temperatureMin.text = " min °C"
         temperatureMin.textAlignment = .left
         temperatureMin.textColor = .label
         temperatureMin.font = UIFont.systemFont(ofSize: 14, weight: .medium)
@@ -153,23 +147,11 @@ class ViewController: UIViewController {
                                     ])
     }
     
-    private func setupNavigationItems(){
+    func setupNavigationItems(){
         self.navigationItem.title = "Weather"
         self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "plus.circle"), style: .plain, target: self, action: #selector(addButtonDidTap)),
                                                    UIBarButtonItem(image: UIImage(systemName: "thermometer"), style: .plain, target: self, action: #selector(forecastButtonDidTap)),
                                                    UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise"), style: .plain, target: self, action: #selector(refreshButtonDidTap))]
     }
     
-    @objc private func addButtonDidTap(){
-        
-    }
-    
-    @objc private func forecastButtonDidTap(){
-        
-    }
-    
-    @objc private func refreshButtonDidTap(){
-        
-    }
 }
-

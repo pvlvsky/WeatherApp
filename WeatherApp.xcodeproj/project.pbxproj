@@ -17,6 +17,7 @@
 		3816A70329A73CF200A56BE7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3816A70229A73CF200A56BE7 /* NetworkService.swift */; };
 		3816A70529A74A3A00A56BE7 /* ForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3816A70429A74A3A00A56BE7 /* ForecastModel.swift */; };
 		38D887CF29A761CC00E030BA /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38D887CE29A761CC00E030BA /* ViewController.xib */; };
+		38D887D129A7790B00E030BA /* ViewController+Extansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D887D029A7790B00E030BA /* ViewController+Extansion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		3816A70229A73CF200A56BE7 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		3816A70429A74A3A00A56BE7 /* ForecastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastModel.swift; sourceTree = "<group>"; };
 		38D887CE29A761CC00E030BA /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		38D887D029A7790B00E030BA /* ViewController+Extansion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extansion.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				3816A70129A73BF100A56BE7 /* Model */,
 				3816A6FC29A736D600A56BE7 /* Network */,
 				3816A6EC29A72EAF00A56BE7 /* ViewController.swift */,
+				38D887D029A7790B00E030BA /* ViewController+Extansion.swift */,
 				38D887CE29A761CC00E030BA /* ViewController.xib */,
 				3816A6F629A72EB000A56BE7 /* Info.plist */,
 			);
@@ -186,6 +189,7 @@
 				3816A6E929A72EAF00A56BE7 /* AppDelegate.swift in Sources */,
 				3816A6FE29A736F500A56BE7 /* WeatherModel.swift in Sources */,
 				3816A6EB29A72EAF00A56BE7 /* SceneDelegate.swift in Sources */,
+				38D887D129A7790B00E030BA /* ViewController+Extansion.swift in Sources */,
 				3816A70329A73CF200A56BE7 /* NetworkService.swift in Sources */,
 				3816A70029A73BEB00A56BE7 /* NetworkServiceProtocol.swift in Sources */,
 				3816A70529A74A3A00A56BE7 /* ForecastModel.swift in Sources */,
