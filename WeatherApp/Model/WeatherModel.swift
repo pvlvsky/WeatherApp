@@ -36,16 +36,19 @@ struct WeatherModel: Codable {
         case code = "cod"
     }
 }
+
 struct Coordinates: Codable {
     var lon: Float
     var lat: Float
 }
+
 struct Weather: Codable {
     var id: Int
     var main: String
     var description: String
     var icon: String
 }
+
 struct Main: Codable {
     var temperature: Float
     var feelsLike: Float
@@ -63,14 +66,17 @@ struct Main: Codable {
         case humidity
     }
 }
+
 struct Wind: Codable {
     var speed: Float
     var deg: Int
     var gust: Float
 }
+
 struct Clouds: Codable {
     var all: Float
 }
+
 struct System: Codable {
     var type: Int
     var id: Int
