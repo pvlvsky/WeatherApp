@@ -15,7 +15,7 @@ enum TodayWeatherData {
     
     struct ViewData {
         let locationText: String?
-        let timeText: String?
+        let timeText: Double?
         let temperatureText: String?
         let temperatureDescriptionText: String?
         let temperatureImage: String?

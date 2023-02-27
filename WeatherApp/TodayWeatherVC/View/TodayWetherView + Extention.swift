@@ -22,15 +22,15 @@ extension TodayWetherView {
     func makeCurrentTimeLabel() -> UILabel {
         let currentTimelabel = makeLabel(size: 10, withFont: .heavy)
         
-            addSubview(currentTimelabel)
-            
-            
+        addSubview(currentTimelabel)
+        
+        
         currentTimelabel.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([currentTimelabel.topAnchor.constraint(equalTo: currentLocationLabel.bottomAnchor, constant: 8),
-                                         currentTimelabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-                                         currentTimelabel.heightAnchor.constraint(equalToConstant: 10),
-                                         currentTimelabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
-                                        ])
+        NSLayoutConstraint.activate([currentTimelabel.topAnchor.constraint(equalTo: currentLocationLabel.bottomAnchor, constant: 8),
+                                     currentTimelabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+                                     currentTimelabel.heightAnchor.constraint(equalToConstant: 10),
+                                     currentTimelabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+                                    ])
         return currentTimelabel
     }
     
@@ -58,7 +58,6 @@ extension TodayWetherView {
                                      weatherImage.widthAnchor.constraint(equalToConstant: 50)
                                     ])
         return weatherImage
-        
     }
     
     func makeTemperatureDescriptionLabel() -> UILabel {
@@ -76,7 +75,7 @@ extension TodayWetherView {
     func makeTemperatureMinLabel() -> UILabel {
         let temperatureMinLabel = makeLabel(size: 14, withFont: .medium)
         addSubview(temperatureMinLabel)
-    
+        
         temperatureMinLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([ temperatureMinLabel.topAnchor.constraint(equalTo: weatherImage.bottomAnchor, constant: 80),
                                       temperatureMinLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
@@ -89,7 +88,7 @@ extension TodayWetherView {
     func makeTemperatureMaxLabel() -> UILabel {
         let temperatureMaxLabel = makeLabel(size: 14, withFont: .medium)
         addSubview(temperatureMaxLabel)
-    
+        
         NSLayoutConstraint.activate([temperatureMaxLabel.topAnchor.constraint(equalTo: temperatureMinLabel.bottomAnchor),
                                      temperatureMaxLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
                                      temperatureMaxLabel.heightAnchor.constraint(equalToConstant: 20),

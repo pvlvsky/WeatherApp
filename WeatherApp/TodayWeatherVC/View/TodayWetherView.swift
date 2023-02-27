@@ -14,7 +14,6 @@ class TodayWetherView: UIView {
         }
     }
     
-    
     lazy var currentLocationLabel = makeCurrentLocationLabel()
     lazy var currentTimeLabel = makeCurrentTimeLabel()
     lazy var currentTemperatureLabel = makeCurrentTemperatureLabel()
@@ -31,40 +30,20 @@ class TodayWetherView: UIView {
         case .loading(let loading):
             update(viewData: loading, isHidden: true)
         case .succses(let succses):
-            
             update(viewData: succses, isHidden: false)
-            
-            loadImage(url: "") { image in
+            weatherImage.loadImage(url: succses.temperatureImage) { image in
                 self.weatherImage.image = image
             }
-//            weatherImage.loadImage(url: succses.temperatureImage) { [weak self] image in
-//                self?.weatherImage.image = image
-//            }
         case .failure(let failure):
             update(viewData: failure, isHidden: true)
         }
     }
     
-    func loadImage(url: String?, completion: @escaping (UIImage) -> ()) {
-        guard let url = url else { return }
-        let urlRequest: URL = URL(string: "http://api.openweathermap.org/img/wn/04d@2x.png")!
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "http"
-        urlComponents.host = "api.openweathermap.org"
-        urlComponents.path = "/img/wn/\(url)@2x.png"
-        guard let url = urlComponents.url else { return }
-        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-            if let error = error {
-                print(error.localizedDescription)
-            } else if data != nil {
-                let imageData = try? Data(contentsOf: urlRequest)
-                let image = UIImage(data: data!)
-                DispatchQueue.main.async {
-                    guard let image = image else { return }
-                    completion(image)
-                }
-            }
-        }.resume()
+    func dateFormatter(_ date: Double) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM yyyy hh:mm"
+        let stringDate = formatter.string(from: Date(timeIntervalSince1970: TimeInterval(date)))
+        return stringDate
     }
     
     func update(viewData: TodayWeatherData.ViewData?, isHidden: Bool) {
@@ -72,7 +51,7 @@ class TodayWetherView: UIView {
         guard let viewData = viewData else { return }
         currentLocationLabel.text = viewData.locationText
         currentLocationLabel.isHidden = isHidden
-        currentTimeLabel.text = viewData.timeText
+        currentTimeLabel.text = dateFormatter(viewData.timeText ?? 0)
         currentTimeLabel.isHidden = isHidden
         currentTemperatureLabel.text = viewData.temperatureText
         currentTemperatureLabel.isHidden = isHidden

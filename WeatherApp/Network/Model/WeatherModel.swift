@@ -35,7 +35,7 @@ struct Main: Codable {
     var temperatureMin: Float
     var temperatureMax: Float
     
-
+    
     enum CodingKeys: String, CodingKey {
         case temperature = "temp"
         case feelsLike = "feels_like"
