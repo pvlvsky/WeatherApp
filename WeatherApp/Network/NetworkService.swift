@@ -6,16 +6,17 @@
 //
 
 import Foundation
+import UIKit
 
 final class NetworkService: NetworkServiceProtocol {
     
-    func loadWeather(city: String, completion: @escaping (WeatherModel) -> ()) {
-        let formattedCity = city.replacingOccurrences(of: "-", with: "+")
+    func loadWeather(city: String, completion: @escaping (NetworkWeatherModel) -> ()) {
+        let formattedCity = city.replacingOccurrences(of: " ", with: "+")
         
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "api.openweathermap.org"
-        urlComponents.path = "/data/2.5/weather"
+        urlComponents.path = "/data/2.5/forecast"
         urlComponents.queryItems = [URLQueryItem(name: "q", value: formattedCity),
                                     URLQueryItem(name: "units", value: "metric"),
                                     URLQueryItem(name: "appid", value: "f7ed119215357f81117dee5db6aa59ae")]
@@ -28,7 +29,7 @@ final class NetworkService: NetworkServiceProtocol {
             if let error = error {
                 print(error.localizedDescription)
             } else if let jsonData = data {
-                let weather = try? JSONDecoder().decode(WeatherModel.self, from: jsonData)
+                let weather = try? JSONDecoder().decode(NetworkWeatherModel.self, from: jsonData)
                 DispatchQueue.main.async {
                     guard let weather = weather else { return }
                     completion(weather)
@@ -37,7 +38,5 @@ final class NetworkService: NetworkServiceProtocol {
         }.resume()
     }
     
-//    func loadForecast(city: String, completion: @escaping ([ForecastTemperature]) -> ()) {
-//    }
     
 }

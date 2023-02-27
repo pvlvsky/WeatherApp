@@ -8,6 +8,5 @@
 import Foundation
 
 protocol NetworkServiceProtocol {
-    func loadWeather(city: String, completion: @escaping (WeatherModel) -> ())
-    //func loadForecast(city: String, completion: @escaping ([ForecastTemperature]) -> ())
+    func loadWeather(city: String, completion: @escaping (NetworkWeatherModel) -> ())
 }

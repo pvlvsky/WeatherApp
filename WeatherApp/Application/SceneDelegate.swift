@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        let view = ViewController(nibName: "\(ViewController.self)", bundle: nil)
+        let view = TodayWeatherVC()
         window?.rootViewController = UINavigationController(rootViewController: view)
         window?.makeKeyAndVisible()
     }
