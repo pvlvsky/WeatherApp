@@ -100,7 +100,7 @@ extension TodayWetherView {
     func makeLabel(size: CGFloat, withFont: UIFont.Weight) -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .label
+        label.textColor = .white
         label.textAlignment = .natural
         label.font = UIFont.systemFont(ofSize: size, weight: withFont)
         label.numberOfLines = 0

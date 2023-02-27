@@ -35,7 +35,7 @@ class TodayWeatherVC: UIViewController {
     }
     
     private func setupView(){
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = .black
     }
     
     func setupNavigationItems(){
