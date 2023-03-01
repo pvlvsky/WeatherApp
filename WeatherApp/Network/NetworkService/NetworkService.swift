@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 final class NetworkService: NetworkServiceProtocol {
     
@@ -36,6 +35,4 @@ final class NetworkService: NetworkServiceProtocol {
             }
         }.resume()
     }
-    
-    
 }

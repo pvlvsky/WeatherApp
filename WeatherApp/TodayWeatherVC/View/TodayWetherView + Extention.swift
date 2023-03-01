@@ -20,7 +20,7 @@ extension TodayWetherView {
     }
     
     func makeCurrentTimeLabel() -> UILabel {
-        let currentTimelabel = makeLabel(size: 10, withFont: .heavy)
+        let currentTimelabel = makeLabel(size: 16, withFont: .heavy)
         
         addSubview(currentTimelabel)
         
@@ -54,14 +54,14 @@ extension TodayWetherView {
         weatherImage.tintColor = .gray
         NSLayoutConstraint.activate([weatherImage.topAnchor.constraint(equalTo: currentTemperatureLabel.bottomAnchor),
                                      weatherImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-                                     weatherImage.heightAnchor.constraint(equalToConstant: 50),
-                                     weatherImage.widthAnchor.constraint(equalToConstant: 50)
+                                     weatherImage.heightAnchor.constraint(equalToConstant: 75),
+                                     weatherImage.widthAnchor.constraint(equalToConstant: 75)
                                     ])
         return weatherImage
     }
     
     func makeTemperatureDescriptionLabel() -> UILabel {
-        let temperatureDescriptionLabel = makeLabel(size: 14, withFont: .light)
+        let temperatureDescriptionLabel = makeLabel(size: 16, withFont: .light)
         addSubview(temperatureDescriptionLabel)
         temperatureDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([temperatureDescriptionLabel.topAnchor.constraint(equalTo: currentTemperatureLabel.bottomAnchor, constant: 16),
@@ -73,7 +73,7 @@ extension TodayWetherView {
     }
     
     func makeTemperatureMinLabel() -> UILabel {
-        let temperatureMinLabel = makeLabel(size: 14, withFont: .medium)
+        let temperatureMinLabel = makeLabel(size: 16, withFont: .medium)
         addSubview(temperatureMinLabel)
         
         temperatureMinLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -86,7 +86,7 @@ extension TodayWetherView {
     }
     
     func makeTemperatureMaxLabel() -> UILabel {
-        let temperatureMaxLabel = makeLabel(size: 14, withFont: .medium)
+        let temperatureMaxLabel = makeLabel(size: 16, withFont: .medium)
         addSubview(temperatureMaxLabel)
         
         NSLayoutConstraint.activate([temperatureMaxLabel.topAnchor.constraint(equalTo: temperatureMinLabel.bottomAnchor),

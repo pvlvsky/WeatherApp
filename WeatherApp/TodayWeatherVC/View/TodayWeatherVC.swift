@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TodayWeatherVC: UIViewController {
+final class TodayWeatherVC: UIViewController {
     
     private var todayWeatherView: TodayWetherView!
     var weatherModel: TodayWeatherViewModelProtocol!
@@ -38,8 +38,9 @@ class TodayWeatherVC: UIViewController {
         self.view.backgroundColor = .black
     }
     
-    func setupNavigationItems(){
+    private func setupNavigationItems(){
         self.navigationItem.title = "Weather"
+        self.navigationItem.titleView?.backgroundColor = .white
         self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "plus.circle"), style: .plain, target: self, action: #selector(addButtonDidTap))]
     }
     
